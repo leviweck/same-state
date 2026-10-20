@@ -16,7 +16,7 @@ Grok, Grok Bot, Cursor, Ollama, llama.cpp, Apple and GitHub are trademarks of th
 
 ## Links
 
-- [Store page](https://leviweck.github.io/same-state/): the guide, price, FAQ and refund terms
+- [Store page](https://samestateguide.com/): the guide, price, FAQ and refund terms
 - [Free kit on GitHub](https://github.com/leviweck/same-state): code, install steps and README
-- [Same State Guide License](https://leviweck.github.io/same-state/license.html): the license you agree to when you buy
-- [Privacy Policy](https://leviweck.github.io/same-state/privacy.html): what order information Levi gets from checkout, why, and how long it is kept
+- [Same State Guide License](https://samestateguide.com/license.html): the license you agree to when you buy
+- [Privacy Policy](https://samestateguide.com/privacy.html): what order information Levi gets from checkout, why, and how long it is kept

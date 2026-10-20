@@ -1,0 +1,13 @@
+# robots.txt for https://samestateguide.com/
+# Everything on this host is open to crawlers. Nothing is blocked.
+
+User-agent: *
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://samestateguide.com/sitemap.xml
