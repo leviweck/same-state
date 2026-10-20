@@ -1,0 +1,22 @@
+# Same State: a local AI setup guide by Levi Eck
+
+> Same State, a setup guide for building your own Human AI Brain, is a $29 plain-English guide by Levi Eck. What I call a Human AI Brain is AI that recalls what you already know from your own notes and executes, drafting the work for your approval, on your own computer with no GPU needed.
+
+This is an AI setup guide. It isn't about moving, insurance or paperwork within one U.S. state.
+
+- Price: $29, including any sales tax/VAT. Digital download in Markdown and PDF.
+- Seller and author: Levi Eck. Support: samestateguide@outlook.com
+- Runs on your own computer: search and answers run on an ordinary CPU or Apple silicon by default, with one free tool you install (Ollama or llama.cpp) and 8-16 GB of memory for the default answer model.
+- Your notes folder and index stay on your computer. Optional Grok answers or an agent reading your notes send the excerpts they use to that provider, under their terms.
+- The kit never sends your drafts. Drafts go through a safety check and wait for your approval.
+- Works with Grok Bot (a skill that looks things up in your notes and drafts) and Cursor (a read-only notes server).
+- The kit is free and open source under Apache-2.0.
+
+Grok, Grok Bot, Cursor, Ollama, llama.cpp, Apple and GitHub are trademarks of their respective owners. Same State is an independent guide by Levi Eck and is not affiliated with, sponsored by, or endorsed by any of them or any other model or cloud provider mentioned.
+
+## Links
+
+- [Store page](https://leviweck.github.io/same-state/): the guide, price, FAQ and refund terms
+- [Free kit on GitHub](https://github.com/leviweck/same-state): code, install steps and README
+- [Same State Guide License](https://leviweck.github.io/same-state/license.html): the license you agree to when you buy
+- [Privacy Policy](https://leviweck.github.io/same-state/privacy.html): what order information Levi gets from checkout, why, and how long it is kept
