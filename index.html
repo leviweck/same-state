@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Same State Guide</title>
+<style>
+  body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; max-width: 680px; margin: 48px auto; padding: 0 20px; color: #1d1d1f; line-height: 1.55; }
+  h1 { font-size: 1.7rem; } h2 { font-size: 1.2rem; margin-top: 2rem; }
+  .consent { font-size: 1rem; color: inherit; } .consent a { color: inherit; text-decoration: underline; }
+  .agree { font-size: 1rem; color: inherit; } .agree a { color: inherit; text-decoration: underline; }
+  .buy { display: inline-block; font-size: 1.05rem; padding: 12px 22px; border-radius: 8px; background: #1d1d1f; color: #fff; text-decoration: none; }
+  footer { margin-top: 3rem; font-size: .9rem; color: #555; }
+  blockquote { margin: 0; padding-left: 1rem; border-left: 3px solid #ddd; color: #444; }
+</style>
+</head>
+<body>
+<h1>Same State</h1>
+<p><strong>Store footer:</strong></p>
+<blockquote>
+<p>As-is, no warranty; you're responsible for your own data and cloud costs.</p>
+<p>This is not a promise of a result, a business, or income.</p>
+<p>Written by Levi Eck with help from AI (Grok Bot). Levi chose what goes in and reviewed it.</p>
+<p>© 2026 Levi Eck. The code template is free and open source under Apache-2.0. Models and cloud services come from third parties under their own licenses and terms. Not affiliated with, sponsored by, or endorsed by any of them.</p>
+<p>Licensor: Levi Eck, samestateguide@outlook.com. Sold by Levi Eck through Link (Sold through Link, LLC, a Stripe affiliate), the merchant of record, which handles checkout, payment, tax and receipts under the Sold Through Link Terms (https://link.com/terms#sold-through-link-terms).</p>
+<p>Your card statement will show LINK.COM* LEVI ECK.</p>
+<p>Grok, Grok Bot, xAI and Cursor are trademarks of their respective owners. Same State is an independent guide by Levi Eck and is not affiliated with, sponsored by, or endorsed by them or any model or cloud provider mentioned.</p>
+<p>Terms: https://leviweck.github.io/same-state/license.html · Privacy: https://leviweck.github.io/same-state/privacy.html</p>
+</blockquote>
+<hr />
+<h2>Same State Guide - $29</h2>
+<p><strong>Price:</strong> $29, including any sales tax/VAT.</p>
+<p><strong>Title:</strong> Same State Guide: build your own Human AI Brain</p>
+<p><strong>Tagline:</strong> A plain-English, step-by-step guide to a personal language model you run yourself, one that remembers what you know and drafts what needs doing.</p>
+<p><strong>Description:</strong></p>
+<p>What if you always remembered? What if you always followed through? What if you had the education and means to deliver?</p>
+<p>That's what I'm building toward with a Human AI Brain: "what I know can be recalled on prompt and I execute what needs to be done for me."</p>
+<p>Here's what follow-through means. It pulls back what you've already written when you ask, and it's built to flag when an answer isn't in your notes. Test it on yours. It drafts for you. The kit can't send anything. Drafts go through a safety check and wait for your approval.</p>
+<p>Written for people who aren't engineers. Simple, but not easy.</p>
+<p><strong>What you need:</strong> your own notes and a computer that can run the kit. No GPU needed. Search and answers run on an ordinary CPU, with a free tool you install yourself.</p>
+<p><strong>What's included:</strong></p>
+<ul>
+<li>Module 1: what a personal language model is, in plain English</li>
+<li>Module 2: setting up where it runs, your models and your notes, plus how to work out your own costs</li>
+<li>Module 3: how it recalls what you know, using keyword and meaning search together, and how to test it on a sample set built from fake notes</li>
+<li>Module 4: the safety layer, where every draft gets checked and the kit can't send anything</li>
+<li>Module 5: putting it to work with Grok, Grok Bot and Cursor: optional Grok answers through the xAI API with spend limits, a Grok Bot skill that looks things up in your notes, drafts, runs the checks and stops for your yes, and changing the kit in Cursor with the safety gates on (Grok and Grok Bot need your own xAI account or plan)</li>
+<li>Format: digital download, Markdown and PDF · Updates: at the author's discretion; none promised.</li>
+</ul>
+<p><strong>Refund/support:</strong> Digital download, sold through Link (Sold through Link, LLC, a Stripe affiliate), the merchant of record, under the Sold Through Link Terms. Refunds aren't offered for a change of mind, except where the law or Link's refund policy provides otherwise. For example, buyers in the EU and UK can cancel within 14 days under Link's terms. If the files don't work, email samestateguide@outlook.com and I'll fix it.</p>
+<p><strong>About me:</strong> I'm Levi Eck. I'm not a coder. I'm an operator who uses AI to build, execute and scale. I spent years in automotive sales, where following through was the whole job, and I wanted that same follow-through in my own life. So I built a Human AI Brain on my own computer that remembers what I know and does what needs doing, using Grok, Grok Bots and Cursor. I use it every day. Same State is the guide I wish I'd had: the way I built and tested my own.</p>
+<p class="consent">By ticking the box and clicking "Buy the guide, $29", you agree to the <a href="license.html">Same State Guide License</a> and acknowledge the <a href="privacy.html">Privacy Policy</a>. Checkout, payment and receipts are handled by Link under the <a href="https://link.com/terms#sold-through-link-terms">Sold Through Link Terms</a>.</p>
+<p class="agree"><input type="checkbox" id="agree"> <label for="agree">I agree to the <a href="license.html">Same State Guide License</a> and have read the <a href="privacy.html">Privacy Policy</a>.</label></p>
+<p><a class="buy" id="buy" href="https://buy.stripe.com/28EcN75S70UldOSaRfdnW00">Buy the guide, $29</a></p>
+<script>
+(function () {
+  var box = document.getElementById("agree"), buy = document.getElementById("buy");
+  if (!box || !buy) return;
+  function sync() {
+    var on = box.checked;
+    buy.setAttribute("aria-disabled", on ? "false" : "true");
+    buy.style.opacity = on ? "" : "0.45";
+    buy.style.pointerEvents = on ? "" : "none";
+    buy.tabIndex = on ? 0 : -1;
+  }
+  buy.addEventListener("click", function (e) { if (!box.checked) e.preventDefault(); });
+  box.addEventListener("change", sync);
+  sync();
+})();
+</script>
+
+<footer><a href="index.html">Same State</a> · <a href="license.html">License terms</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:samestateguide@outlook.com">samestateguide@outlook.com</a></footer>
+</body>
+</html>
