@@ -1,0 +1,16 @@
+# Pass/fail limits for `plm-kit selftest` on the bundled synthetic notes (starter_kit/sample_notes).
+# Set with a safety margin below the maintainer's measured CPU run (shown in the comments), so a working install
+# passes and a broken one (wrong folder, broken index, demotion off, model missing or corrupt) fails.
+# A not-in-notes catch of 2 of 8 is EXPECTED: the gate is a trade-off (README "The not-in-notes gate").
+
+keyword_only:              # before `plm-kit download --components embed`: BM25 + stale-copy demotion
+  min_recall@3: 0.85       # measured 1.0
+  min_mrr: 0.80            # measured 0.943
+  min_stale_demoted: 0.85  # live note above its archived/exported copy (measured 7/7 = 1.0)
+
+fused:                     # default mode with the embedding model: BM25 + dense, RRF, demotion, gate at 0.78
+  min_recall@3: 0.90       # measured 1.0
+  min_mrr: 0.85            # measured 0.984
+  min_stale_demoted: 0.85  # measured 1.0
+  min_nin_caught: 1        # measured 2 of 8
+  max_false_gated: 2       # measured 0 of 32

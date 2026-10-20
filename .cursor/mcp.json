@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "plm-kit-notes": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["-m", "plm_kit.cli", "mcp"],
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}",
+        "PLM_KIT_CONFIG": "${env:PLM_KIT_CONFIG}"
+      }
+    }
+  }
+}

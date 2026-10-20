@@ -1,0 +1,125 @@
+# plm-kit default config. No secrets here: secrets come from env (see .env.example).
+data:
+  docs_dir: sample_data/docs          # user points this at their own notes; never committed
+  index_dir: null                     # null = <user cache>/index (outside the repo; it contains your notes' text)
+  chunking:                           # split at every Markdown heading (path kept), then window each section
+    size: 800                         # max chars per chunk body (cut at the last newline/space in the back half)
+    overlap: 150                      # chars shared by neighbouring windows
+  max_file_mb: 2                      # notes larger than this are skipped
+  skip:                               # never indexed (case-insensitive). Changing these triggers a reindex
+    dirs: [.git, .hg, .svn, .trash, trash, .trashed, $recycle.bin, .obsidian, .logseq, .vscode, .idea, .foam, .dendron, node_modules, __pycache__]
+    files: ["*.bak", "*.bak.*", "*~", ".#*", "*.swp", "*backup*"]   # file-name globs; a FOLDER named backup is demoted, not skipped
+retrieval:
+  mode: fused                         # dense | fused | fused+rerank. `plm-kit ask --mode ...` overrides this
+  preset: null                        # null | quality (= fused+rerank, top_n 20, weight 1.0; ~2 s/query on CPU). `--preset` overrides
+  bm25: {enabled: true}               # SQLite FTS5
+  dense:
+    enabled: true
+    model: granite-embed-r2           # ibm-granite/granite-embedding-english-r2 @ 47ea694b257b703fee9253d75c2b1f2985180498 (see plm_kit/models.py)
+    onnx_dir: null                    # null = <user cache>/<model>-onnx (from `plm-kit download`)
+    max_tokens: 512                   # safety cap on embedding input (the model allows 8192; long inputs can exhaust RAM)
+    batch_size: 32                    # texts per embedding batch while indexing
+    custom: null                      # swap the embedder: {name, hf_id, revision (40-char), pooling: cls|mean, dim, normalize, license, license_url}
+                                      # changing the model triggers a reindex; check its license AND training data first
+  fusion: {method: rrf, k: 60}       # keep k=60
+  stale:                              # stale-copy demotion: score multipliers AFTER fusion (nothing dropped). docs/RETRIEVAL.md
+    archive_dirs: [archive, archived, backup, backups, old]   # exact folder names
+    archive_weight: 0.5               # stacks with derived/owner
+    derived_patterns: ["*-export", "*-exports", "*_export", "*_exports", "*.html.md", "*.html.txt", "*chat-summary*", "*chat-summaries*", "*chat-export*"]
+    derived_weight: 0.6               # globs on any folder or file name
+    owner_patterns: []                # your own authoritative folders/files, e.g. ["my-notes"]; owner beats derived
+    owner_weight: 1.2
+    owner_regex: []                   # regexes searched in the whole relative path (case-insensitive); empty by default
+    derived_regex: []
+    lists_file: null                  # optional extra lists (YAML/TOML), e.g. a copy of config/stale.example.yaml
+  dedupe:                             # newest-copy step, OFF by default; experimental, see docs/RETRIEVAL.md
+    # WARNING: relies on file modification times, which synced/copied folders (OneDrive, Dropbox, git checkouts,
+    # restores) reset. In the maintainer's real-notes test it didn't help and once demoted the right answer.
+    newest_copy: "off"                # off | demote (opt-in) | drop (not recommended): among retrieved near-duplicates keep the newest
+    threshold: 0.9                    # word-shingle Jaccard needed (plus a matching normalized title) to group notes
+    multiplier: 0.5                   # demote mode: score multiplier for the older copies
+    shingle_words: 5
+    min_words: 20                     # shorter notes are never grouped
+    tie_tolerance_s: 60               # newest must be > this many seconds newer than the next copy, else no winner
+  per_note_cap: 2                     # max chunks per note in the results; 0 = no cap
+  dense_floor: null                   # optional: drop results whose dense cosine is below this (off by default)
+  top_k: 10
+  not_in_notes_threshold: 0.78        # best dense cosine below this = weak match. UNRELIABLE on real notes: answerable and
+                                      # out-of-notes scores overlap, so no cutoff separates them (docs/RETRIEVAL.md)
+  not_in_notes_gate: block            # block ("Not in your notes") | warn (show results + a warning) | off. Consider warn/off
+  reranker:
+                                      # used only in mode fused+rerank (off by default). PLM_KIT_RERANKER=off forces fused
+    model: granite-r2                 # ibm-granite/granite-embedding-reranker-english-r2 @ d09d3d6971b689bf9c23839e45a470874d46e13a
+    onnx_dir: null                    # null = <user cache>/<model>-onnx; unused while disabled
+    top_n: 20                         # rerank_n (same as the quality preset); 0 disables
+    weight: 1.0                       # w_rerank (same as the quality preset); 0 disables
+    max_tokens: 512                   # safety cap per (query, note) pair
+    threads: null                     # ONNX Runtime threads; null = all cores
+    k: 20                             # rerank_k in the blend
+generation:
+  backend: auto                       # auto (default, no GPU): ollama if running, else llamacpp_python if installed |
+                                      # ollama | llamacpp_server | llamacpp_python | transformers_peft (CUDA GPU, opt-in) | none
+                                      # | any backend registered via plm_kit/answer.py (pluggable)
+  backend_modules: []                 # extra Python modules that register answer backends (see plm_kit/answer.py)
+  allow_off_machine: false            # must be true for a backend that sends your notes off this computer (hosted APIs)
+  base_model: Qwen/Qwen3-8B
+  base_revision: b968826d9c46dd6066d109eabc6255188de91218   # pinned HF commit (Apache-2.0)
+  quantization: bnb_4bit_nf4          # bitsandbytes 4-bit; needs a CUDA GPU (e.g. 24 GB-class like an L4)
+  adapter_dir: null                   # optional: the user's OWN LoRA adapter (peft), outside the repo; never bundled
+  max_new_tokens: 512
+  local:                              # shared by the no-GPU backends (docs/NO_GPU.md). You install Ollama / llama.cpp yourself
+    model: qwen3-4b-instruct          # registry key in plm_kit/models.py (Apache-2.0): qwen3-4b-instruct (default, 8-16 GB) |
+                                      # granite-4.0-micro | qwen2.5-1.5b-instruct (8 GB) | qwen2.5-0.5b-instruct (smoke test only)
+    n_ctx: 8192                       # context window (tokens); lower it on 8 GB machines
+    threads: null                     # CPU threads; null = backend default
+    temperature: 0.2
+    timeout_s: 600                    # CPU answers can take a minute or more
+    allow_remote: false               # loopback only; another host needs this AND allow_off_machine (PRIVACY.md)
+  ollama:                             # backend ollama
+    host: http://127.0.0.1:11434
+    model: null                       # null = the registry's Ollama tag (e.g. qwen3:4b-instruct); or any tag you pulled
+  llamacpp_server:                    # backend llamacpp_server (`llama-server -m model.gguf`)
+    url: http://127.0.0.1:8080
+  llamacpp_python:                    # backend llamacpp_python (pip install -r requirements-local.txt)
+    gguf_path: null                   # null = <user cache>/gguf/<registry file> (`plm-kit download --components gguf`)
+  xai:                                # backend xai (hosted, OFF by default): sends excerpts of your notes to xAI. Needs
+                                      # allow_off_machine: true, a one-time consent and env XAI_API_KEY (PRIVACY.md)
+    model: grok-4.3                   # any model with a row in `prices`, e.g. grok-4.7
+    region: global                    # global (api.x.ai) | us (us.api.x.ai, billed 1.1x; serves ONLY grok-4.7 / grok-4.6)
+    reasoning_effort: low             # none | low | medium | high | xhigh | null (model default); reasoning bills as output
+    temperature: null                 # null = the model's default
+    timeout_s: 120
+    max_cost_usd: 1.0                 # per run (one command's process, all its answers): refuses BEFORE sending if spent + estimate would exceed this
+    max_cost_usd_per_day: 2.0         # this computer, local date: persistent ledger <user cache>/spend/xai-ledger.json
+    max_cost_usd_per_month: null      # optional monthly limit (same ledger); null = none
+    chars_per_token: 3.0              # pessimistic prompt-size estimate for the cap (lower = more cautious)
+    reasoning_allowance_tokens: 4096  # reasoning budget in the pre-send estimate: xAI bills reasoning on top of the
+                                      # visible-answer limit and documents no bound (4096 = INFERENCE, conservative for
+                                      # effort low; raise for medium/high/xhigh). Over-estimate answers are still recorded
+    prices:                           # USD per 1M tokens, prompts < 200k tokens. CHECK https://docs.x.ai/developers/pricing
+      grok-4.3: {input: 1.25, output: 2.50}
+      grok-4.6: {input: 2.00, output: 6.00}
+      grok-4.7: {input: 2.00, output: 6.00}
+  voice_lite:                         # style from 5-8 of YOUR example lines, few-shot, no training (no-GPU backends)
+    enabled: false                    # or per question: plm-kit ask --answer --voice-lite
+    examples_file: null               # .txt (one line each) or .jsonl ({"text": ...}); keep it OUTSIDE the repo
+    copy_guard_ngram: 12              # flag any 12+ words in a row copied from an example (4-12; smaller = stricter)
+    on_copy: redact                   # after `retries` regenerations still copying: redact the copied words | block the answer
+    retries: 1
+sources:
+  onedrive:                           # optional, read-only (Microsoft Graph, Files.Read). See docs/ONEDRIVE.md
+    enabled: false
+    client_id: null                   # YOUR Entra app's client id. Or env PLM_KIT_ONEDRIVE_CLIENT_ID. Nothing is baked in
+    tenant: null                      # consumers | organizations | common | your tenant id/domain. Or env PLM_KIT_ONEDRIVE_TENANT
+    auth: device_code                 # device_code | interactive (browser on this machine)
+    folders: []                       # OneDrive folders to sync, e.g. ["Notes/Recipes"]
+    extensions: [".md", ".txt"]
+    max_file_mb: 5
+    sync_dir: null                    # null = <user cache>/sources/onedrive (outside the repo)
+    token_cache: null                 # null = your OS user cache dir (outside the repo), file mode 0600
+integrations:
+  mcp:                                # `plm-kit mcp`: read-only notes server for agents (stdio). See integrations/
+    max_k: 10                         # most excerpts one search_notes call returns
+    max_note_chars: 8000              # get_note returns at most this many characters
+    max_excerpt_chars: 1200           # each search_notes excerpt is clipped to this
+    expose_voice_examples: false      # true = the voice_examples tool returns your style lines to the agent's model

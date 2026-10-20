@@ -1,0 +1,8 @@
+{
+  "accepted_weak_copyleft": {
+    "certifi": {"license": "MPL-2.0", "status": "reviewed, accepted by Legal 2026-10-17",
+                "condition": "unmodified, installed from PyPI, not vendored or patched"},
+    "tqdm": {"license": "MPL-2.0 AND MIT", "status": "reviewed, accepted by Legal 2026-10-17",
+             "condition": "unmodified, installed from PyPI, not vendored or patched"}
+  }
+}

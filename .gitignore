@@ -1,0 +1,62 @@
+# --- secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*credentials*
+*secret*
+!**/*secret*.md
+# --- model weights / adapters ---
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.gguf
+*.onnx
+*.ggml
+adapter_config.json
+adapter_model.*
+lora*/
+adapters/
+models/
+.plm_kit_models/
+# --- indexes / vector stores ---
+.plm_kit_index/
+*.sqlite
+*.sqlite3
+*.db
+*.faiss
+*.index
+*.npy
+*.parquet
+chroma/
+lancedb/
+# --- data dumps / personal exports ---
+data/
+dumps/
+exports/
+*.mbox
+*.eml
+*.pst
+*.vcf
+*.csv
+*.xlsx
+conversations*.json
+*.wav
+*.mp3
+*.m4a
+# --- python / tooling ---
+__pycache__/
+*.pyc
+.venv*/
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
+# --- local-only release denylist (maintainer only; never committed or shipped) ---
+scripts/.release-denylist.local
+# --- local content-rule list (names that must never appear in the kit); see config/denylist.example.txt ---
+config/denylist.local.txt

@@ -1,0 +1,80 @@
+{"id": "a01", "query": "how often should I lube the bike chain", "relevant": ["bike-maintenance.md"], "answerable": true, "style": "keyword"}
+{"id": "a02", "query": "starter feeding ratio", "relevant": ["sourdough.md"], "answerable": true, "style": "keyword"}
+{"id": "a03", "query": "when do the tomatoes get watered", "relevant": ["garden-watering.md"], "answerable": true, "style": "keyword"}
+{"id": "a04", "query": "what oil goes in the hatchback", "relevant": ["car-maintenance.md"], "answerable": true, "style": "keyword"}
+{"id": "a05", "query": "how do I factory reset the AX-7731", "relevant": ["home-wifi.md"], "answerable": true, "style": "keyword"}
+{"id": "a06", "query": "what is the guest network name", "relevant": ["home-wifi.md"], "answerable": true, "style": "keyword"}
+{"id": "a07", "query": "how much food does Miso get", "relevant": ["cat-care.md"], "answerable": true, "style": "keyword"}
+{"id": "a08", "query": "pour-over coffee to water ratio", "relevant": ["coffee-brewing.md"], "answerable": true, "style": "keyword"}
+{"id": "a09", "query": "which day is blue bin recycling", "relevant": ["recycling-schedule.md"], "answerable": true, "style": "keyword"}
+{"id": "a10", "query": "printer cartridge code", "relevant": ["printer-setup.md"], "answerable": true, "style": "keyword"}
+{"id": "a11", "query": "what grit sandpaper for the bookshelf", "relevant": ["woodworking.md"], "answerable": true, "style": "keyword"}
+{"id": "a12", "query": "smoke alarm battery replacement month", "relevant": ["smoke-alarms.md"], "answerable": true, "style": "keyword"}
+{"id": "a13", "query": "water heater thermostat setting", "relevant": ["water-heater.md"], "answerable": true, "style": "keyword"}
+{"id": "a14", "query": "Caro-Kann", "relevant": ["chess-openings.md"], "answerable": true, "style": "keyword"}
+{"id": "a15", "query": "bread machine program for white loaf", "relevant": ["bread-machine.md"], "answerable": true, "style": "keyword"}
+{"id": "a16", "query": "how long does cooked rice keep", "relevant": ["meal-prep.md"], "answerable": true, "style": "keyword"}
+{"id": "a17", "query": "what seed goes in the feeder", "relevant": ["bird-feeder.md"], "answerable": true, "style": "keyword"}
+{"id": "a18", "query": "percent of pay that goes to savings", "relevant": ["budget-categories.md"], "answerable": true, "style": "keyword"}
+{"id": "a19", "query": "my internet box needs to be wiped back to defaults", "relevant": ["home-wifi.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a20", "query": "when should the kitty see the animal doctor", "relevant": ["cat-care.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a21", "query": "what goes in the go-bag for disasters", "relevant": ["emergency-kit.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a22", "query": "settings for crisp scenery pictures", "relevant": ["photography.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a23", "query": "my loaf came out heavy and didn't rise", "relevant": ["sourdough-troubleshooting.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a24", "query": "what should I bring for a night sleeping outdoors in the woods", "relevant": ["camping-checklist.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a25", "query": "how do I keep the pile of food scraps decomposing well", "relevant": ["compost.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a26", "query": "which evening do friends meet to play tabletop games", "relevant": ["board-game-night.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a27", "query": "how much time per day do I practice the foreign language", "relevant": ["language-study.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a28", "query": "how often do the indoor greens get a drink", "relevant": ["houseplants.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a29", "query": "weekly jogging schedule for the race", "relevant": ["running-plan.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a30", "query": "what to pack for a trip to the seaside", "relevant": ["vacation-packing.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a31", "query": "how do I change the strings on my instrument", "relevant": ["guitar-practice.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a32", "query": "cooking ahead for the week on the weekend", "relevant": ["meal-prep.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a33", "query": "the wireless printer stopped showing up on the network", "relevant": ["printer-setup.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a34", "query": "how often to test the fire detectors", "relevant": ["smoke-alarms.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a35", "query": "draining the hot water tank", "relevant": ["water-heater.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a36", "query": "how long between tire rotations on the car", "relevant": ["car-maintenance.md"], "answerable": true, "style": "paraphrase"}
+{"id": "n01", "query": "what is my car insurance renewal date", "relevant": [], "answerable": false, "style": "near_miss"}
+{"id": "n02", "query": "what is the wifi password", "relevant": [], "answerable": false, "style": "near_miss"}
+{"id": "n03", "query": "when is my dentist appointment", "relevant": [], "answerable": false, "style": "off_topic"}
+{"id": "n04", "query": "how much did the new couch cost", "relevant": [], "answerable": false, "style": "off_topic"}
+{"id": "n05", "query": "what is the name of my landlord", "relevant": [], "answerable": false, "style": "off_topic"}
+{"id": "n06", "query": "which flight am I taking to Lisbon", "relevant": [], "answerable": false, "style": "off_topic"}
+{"id": "n07", "query": "what is my blood type", "relevant": [], "answerable": false, "style": "off_topic"}
+{"id": "n08", "query": "what time does the swimming pool open on Sundays", "relevant": [], "answerable": false, "style": "near_miss"}
+{"id": "a37", "query": "Brightwash error code E4", "relevant": ["dishwasher.md"], "answerable": true, "style": "keyword"}
+{"id": "a38", "query": "how often to rinse the dishwasher filter", "relevant": ["dishwasher.md"], "answerable": true, "style": "keyword"}
+{"id": "a39", "query": "seed stitch scarf needle size", "relevant": ["knitting.md"], "answerable": true, "style": "keyword"}
+{"id": "a40", "query": "neon tetras water change", "relevant": ["fish-tank.md"], "answerable": true, "style": "keyword"}
+{"id": "a41", "query": "aquarium heater temperature", "relevant": ["fish-tank.md"], "answerable": true, "style": "keyword"}
+{"id": "a42", "query": "river path commute distance", "relevant": ["bike-commute.md"], "answerable": true, "style": "keyword"}
+{"id": "a43", "query": "green tea steeping temperature", "relevant": ["tea.md"], "answerable": true, "style": "keyword"}
+{"id": "a44", "query": "mowing height in summer", "relevant": ["lawn-care.md"], "answerable": true, "style": "keyword"}
+{"id": "a45", "query": "moving van booking", "relevant": ["moving-checklist.md"], "answerable": true, "style": "keyword"}
+{"id": "a46", "query": "1,500 m lap session", "relevant": ["swimming.md"], "answerable": true, "style": "keyword"}
+{"id": "a47", "query": "Stitchwell needle size for cotton", "relevant": ["sewing-machine.md"], "answerable": true, "style": "keyword"}
+{"id": "a48", "query": "strawberry jam sugar ratio", "relevant": ["jam-making.md"], "answerable": true, "style": "keyword"}
+{"id": "a49", "query": "Cedar Ridge loop length", "relevant": ["hiking-trail.md"], "answerable": true, "style": "keyword"}
+{"id": "a50", "query": "which eyepiece to find objects", "relevant": ["telescope.md"], "answerable": true, "style": "keyword"}
+{"id": "a51", "query": "heat pump filter cleaning", "relevant": ["heat-pump.md"], "answerable": true, "style": "keyword"}
+{"id": "a52", "query": "pantry staples list", "relevant": ["pantry-staples.md"], "answerable": true, "style": "keyword"}
+{"id": "a53", "query": "how warm should the house be in winter", "relevant": ["heat-pump.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a54", "query": "the machine that cleans plates shows a fault about water not coming in", "relevant": ["dishwasher.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a55", "query": "how many loops do I start the neck warmer with", "relevant": ["knitting.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a56", "query": "how often do the little fish eat", "relevant": ["fish-tank.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a57", "query": "what time should I set off cycling to work", "relevant": ["bike-commute.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a58", "query": "how many times can I reuse the leaves for the semi-oxidized brew", "relevant": ["tea.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a59", "query": "when should I poke holes in the grass", "relevant": ["lawn-care.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a60", "query": "what goes in the box I open on the first night in the new place", "relevant": ["moving-checklist.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a61", "query": "my pool workout plan", "relevant": ["swimming.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a62", "query": "how do I know the preserve has set", "relevant": ["jam-making.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a63", "query": "is there drinking water along the mountain walk in late summer", "relevant": ["hiking-trail.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a64", "query": "lining up the mirrors on the stargazing scope", "relevant": ["telescope.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a65", "query": "dry goods I always keep in the cupboard", "relevant": ["pantry-staples.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a66", "query": "how often to lubricate the bobbin", "relevant": ["sewing-machine.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a67", "query": "how much space does the outside unit of the heating system need", "relevant": ["heat-pump.md"], "answerable": true, "style": "paraphrase"}
+{"id": "a68", "query": "which caffeinated leaves need water straight off the boil", "relevant": ["tea.md"], "answerable": true, "style": "paraphrase"}
+{"id": "n09", "query": "what's the dishwasher warranty expiry date", "relevant": [], "answerable": false, "style": "near_miss"}
+{"id": "n10", "query": "what size are the knitting needles for the sweater pattern", "relevant": [], "answerable": false, "style": "near_miss"}
+{"id": "n11", "query": "how much did the telescope cost", "relevant": [], "answerable": false, "style": "near_miss"}
+{"id": "n12", "query": "what is the gate code for the hiking trail parking lot", "relevant": [], "answerable": false, "style": "near_miss"}

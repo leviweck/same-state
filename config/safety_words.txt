@@ -1,0 +1,7 @@
+# Editable draft-check word list: one word or phrase per line (case-insensitive). Lines starting with # are ignored.
+# These are generic examples. Replace them with the terms YOU never want in an outbound draft.
+confidential
+internal only
+do not forward
+password
+account number

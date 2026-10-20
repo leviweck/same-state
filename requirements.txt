@@ -1,0 +1,21 @@
+# Direct runtime dependencies, all pinned. Full transitive lock: requirements.lock
+# Serving default: transformers + peft (base Qwen3-8B, 4-bit via bitsandbytes on a CUDA GPU). No GGUF/Ollama by default.
+# torch: install the build for your platform at this version (CPU: --index-url https://download.pytorch.org/whl/cpu).
+torch==2.8.0
+transformers==4.55.4
+peft==0.17.1
+accelerate==1.10.1
+bitsandbytes==0.47.0
+safetensors==0.6.2
+sentencepiece==0.2.1
+protobuf==6.32.1
+huggingface_hub==0.34.4
+# Retrieval (dense embeddings + optional reranker via ONNX)
+fastembed==0.9.0   # rerank.py relies on its add_custom_model signature and specific_model_path
+pyyaml==6.0.3
+numpy==2.5.4       # dense vectors (already in requirements.lock via fastembed)
+tokenizers==0.21.4 # Apache-2.0; input-length caps with the model's own tokenizer.json (already in the lock via fastembed)
+# Optional OneDrive source (read-only, Microsoft Graph). Imported only by `plm-kit onedrive ...`
+msal==1.39.0       # MIT. Pulls PyJWT (MIT), cryptography (Apache-2.0 OR BSD-3-Clause), cffi (MIT-0), pycparser (BSD-3-Clause)
+requests==2.34.2   # Apache-2.0 (already in requirements.lock); the adapter's only HTTP client (GET only)
+# Optional read-only notes server for agents (`plm-kit mcp`): not in this file; see requirements-mcp.txt

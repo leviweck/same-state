@@ -1,0 +1,19 @@
+# Example owner/derived lists for stale-copy demotion. Copy it OUTSIDE the repo, edit it, and point
+# retrieval.stale.lists_file at your copy. These entries EXTEND the lists in your config. All examples are fictional.
+#
+# Precedence: owner beats derived (a note matching both gets only owner_weight, default x1.2). The archive folder
+# rule (archive/archived/backup/backups/old, x0.5) stacks on top of either one.
+# *_patterns: globs matched against each folder or file name (case-insensitive).
+# *_regex:    regular expressions searched in the whole relative path, lowercased (e.g. "projects/garden/plan.md").
+
+owner_patterns:
+  - "my-notes"                 # a folder you write in yourself
+  - "*-journal"                # e.g. "garden-journal"
+owner_regex:
+  - "^projects/[^/]+/plan\\.md$"
+
+derived_patterns:
+  - "web-clips"                # pages clipped from the web
+  - "*-transcript*"            # machine transcripts
+derived_regex:
+  - "/exports?/\\d{4}-\\d{2}-\\d{2}/"   # dated export folders, e.g. "tool/export/2026-01-31/"

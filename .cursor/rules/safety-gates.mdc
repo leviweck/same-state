@@ -1,0 +1,22 @@
+---
+description: Gates to run before every commit, and the data/privacy rules for this repo
+alwaysApply: true
+---
+
+Before any commit, run and pass, in order:
+1. `python -m pytest -q`
+2. `ruff check .`
+3. `gitleaks dir . --no-banner --redact` (or `gitleaks detect --no-banner --redact` once you have commits)
+4. the license gate (`pip-licenses --from=mixed --format=json > /tmp/licenses.json && python scripts/check_licenses.py /tmp/licenses.json`) when dependencies change
+5. the content rule `tests/test_content_rules.py` (private names live only in the gitignored `config/denylist.local.txt` or a `PLM_KIT_DENYLIST` file)
+
+Naming: the product is Same State (plain text, no trademark symbols). Refer to Grok, Grok Bot, xAI and Cursor only by name to
+describe compatibility: no logos, no "official", no implied endorsement or partnership. Never mention internal
+team or project names.
+
+Data rules:
+- No real personal data anywhere in the repo: eval sets, sample notes, style examples and tests are synthetic.
+- No weights, indexes, caches, exports, keys or tokens in the repo. Secrets come from environment variables.
+- Nothing is pushed, published or sent without the maintainer's explicit yes. Agents draft; the owner approves.
+- Do not weaken the not-in-notes gate warnings, the copy guard, the draft check, the off-machine opt-in, the xAI
+  consent or the cost cap.

@@ -1,0 +1,10 @@
+# Optional: in-process no-GPU answers (generation.backend: llamacpp_python). Not needed for ollama / llamacpp_server.
+# MIT. Prebuilt CPU wheels: pip install -r requirements-local.txt --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
+# Apple Silicon (Metal): CMAKE_ARGS="-DGGML_METAL=on" pip install -r requirements-local.txt  (builds locally; needs Xcode command line tools)
+llama-cpp-python==0.3.36
+# Locked runtime dependencies of llama-cpp-python 0.3.36 (versions installed and tested on the maintainer's machine):
+diskcache==5.6.3
+Jinja2==3.1.6
+MarkupSafe==3.0.3
+numpy==2.5.4
+typing_extensions==4.16.0

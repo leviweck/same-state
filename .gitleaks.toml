@@ -1,0 +1,16 @@
+title = "plm-kit gitleaks config"
+[extend]
+useDefault = true
+
+# The kit must never ship anyone's Entra app registration: client and tenant ids come from the user's config/env.
+[[rules]]
+id = "entra-client-or-tenant-id"
+description = "GUID-like Entra client/tenant id hard-coded (bring-your-own app registration only)"
+regex = '''(?i)(client[_-]?id|tenant([_-]?id)?|authority|app[_-]?id)["']?\s*[:=]\s*["']?[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'''
+keywords = ["client", "tenant", "authority", "app"]
+
+[[rules]]
+id = "entra-authority-with-tenant-guid"
+description = "login.microsoftonline.com authority with a hard-coded tenant GUID"
+regex = '''(?i)login\.microsoftonline\.com/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'''
+keywords = ["login.microsoftonline.com"]

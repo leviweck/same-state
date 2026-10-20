@@ -1,0 +1,40 @@
+{"id": "s01", "query": "what is my hourly design rate", "relevant": ["business/pricing-sheet.md"], "answerable": true, "style": "keyword", "answer_contains": "$65", "stale": ["archive/pricing-sheet-2024.md", "notes-export/pricing-sheet.html.md"]}
+{"id": "s02", "query": "how much does the logo package cost", "relevant": ["business/pricing-sheet.md"], "answerable": true, "style": "keyword", "answer_contains": "$900", "stale": ["archive/pricing-sheet-2024.md", "notes-export/pricing-sheet.html.md"]}
+{"id": "s03", "query": "rush job surcharge for orders under 48 hours", "relevant": ["business/pricing-sheet.md"], "answerable": true, "style": "keyword", "answer_contains": "30%", "stale": ["archive/pricing-sheet-2024.md", "notes-export/pricing-sheet.html.md"]}
+{"id": "s04", "query": "when do invoices go out", "relevant": ["business/invoicing.md"], "answerable": true, "style": "keyword", "answer_contains": "15th"}
+{"id": "s05", "query": "what are my payment terms", "relevant": ["business/invoicing.md"], "answerable": true, "style": "keyword", "answer_contains": "net 15"}
+{"id": "s06", "query": "late fee on overdue invoices", "relevant": ["business/invoicing.md"], "answerable": true, "style": "keyword", "answer_contains": "1.5%"}
+{"id": "s07", "query": "how big is the deposit before starting design work", "relevant": ["business/client-onboarding.md"], "answerable": true, "style": "keyword", "answer_contains": "50%", "stale": ["archive/client-onboarding-old.md"]}
+{"id": "s08", "query": "how many revision rounds are included", "relevant": ["business/contract-terms.md"], "answerable": true, "style": "keyword", "answer_contains": "Two"}
+{"id": "s09", "query": "what happens if a client cancels halfway through", "relevant": ["business/contract-terms.md"], "answerable": true, "style": "paraphrase", "answer_contains": "25%"}
+{"id": "s10", "query": "how much of each payment do I save for taxes", "relevant": ["business/quarterly-taxes.md"], "answerable": true, "style": "paraphrase", "answer_contains": "28%"}
+{"id": "s11", "query": "estimated tax due dates", "relevant": ["business/quarterly-taxes.md"], "answerable": true, "style": "keyword", "answer_contains": "June 15"}
+{"id": "s12", "query": "when do I reconcile the bank account", "relevant": ["business/bookkeeping-routine.md"], "answerable": true, "style": "keyword", "answer_contains": "Friday"}
+{"id": "s13", "query": "what card stock do I use", "relevant": ["business/paper-and-suppliers.md"], "answerable": true, "style": "keyword", "answer_contains": "100 lb"}
+{"id": "s14", "query": "when should I reorder paper", "relevant": ["business/paper-and-suppliers.md"], "answerable": true, "style": "keyword", "answer_contains": "two reams"}
+{"id": "s15", "query": "how often to clean the printer head", "relevant": ["business/equipment-maintenance.md"], "answerable": true, "style": "keyword", "answer_contains": "two weeks"}
+{"id": "s16", "query": "when do I replace the cutter blade", "relevant": ["business/equipment-maintenance.md"], "answerable": true, "style": "keyword", "answer_contains": "three months"}
+{"id": "s17", "query": "what time does the nightly backup run", "relevant": ["business/offsite-copies-policy.md"], "answerable": true, "style": "keyword", "answer_contains": "2 am"}
+{"id": "s18", "query": "where is the offsite backup drive kept", "relevant": ["business/offsite-copies-policy.md"], "answerable": true, "style": "paraphrase", "answer_contains": "sister"}
+{"id": "s19", "query": "which days do print orders ship", "relevant": ["business/shipping-orders.md"], "answerable": true, "style": "keyword", "answer_contains": "Tuesdays and Fridays"}
+{"id": "s20", "query": "how long does a customer have to report a misprint", "relevant": ["business/returns-policy.md"], "answerable": true, "style": "paraphrase", "answer_contains": "14 days"}
+{"id": "s21", "query": "which days do I post on social media", "relevant": ["business/social-media-plan.md"], "answerable": true, "style": "keyword", "answer_contains": "Tuesdays and Thursdays"}
+{"id": "s22", "query": "when does the newsletter go out", "relevant": ["business/newsletter.md"], "answerable": true, "style": "keyword", "answer_contains": "first Monday"}
+{"id": "s23", "query": "when does the liability insurance renew", "relevant": ["business/insurance.md"], "answerable": true, "style": "keyword", "answer_contains": "June"}
+{"id": "s24", "query": "how much is the paid trial project for new freelancers", "relevant": ["business/hiring-freelancers.md"], "answerable": true, "style": "keyword", "answer_contains": "$200"}
+{"id": "s25", "query": "Bluefin Bakery logo delivery date", "relevant": ["clients/meeting-notes-bluefin-bakery.md"], "answerable": true, "style": "keyword", "answer_contains": "April 10", "stale": ["chat-summaries/bluefin-bakery-chat-summary.md"]}
+{"id": "s26", "query": "what colors did the bakery pick for the rebrand", "relevant": ["clients/meeting-notes-bluefin-bakery.md"], "answerable": true, "style": "paraphrase", "answer_contains": "teal", "stale": ["chat-summaries/bluefin-bakery-chat-summary.md"]}
+{"id": "s27", "query": "how many pages is the yoga studio website", "relevant": ["clients/copperleaf-yoga-website.md"], "answerable": true, "style": "paraphrase", "answer_contains": "five"}
+{"id": "s28", "query": "when is my deep work block", "relevant": ["productivity/time-blocking.md"], "answerable": true, "style": "keyword", "answer_contains": "8 to 11", "stale": ["old/time-blocking-2023.md"]}
+{"id": "s29", "query": "what do I do in the weekly review", "relevant": ["productivity/weekly-review.md"], "answerable": true, "style": "keyword", "answer_contains": "top three"}
+{"id": "s30", "query": "what are my goals for this year", "relevant": ["productivity/goals-2026.md"], "answerable": true, "style": "paraphrase", "answer_contains": "retainer"}
+{"id": "s31", "query": "what is my desk height", "relevant": ["home/home-office-setup.md"], "answerable": true, "style": "keyword", "answer_contains": "72 cm"}
+{"id": "s32", "query": "how far is the round trip to the paper supplier", "relevant": ["home/mileage-log.md"], "answerable": true, "style": "keyword", "answer_contains": "14 miles"}
+{"id": "n01", "query": "what is my sales tax registration number", "relevant": [], "answerable": false, "style": "near-miss"}
+{"id": "n02", "query": "how do I set up payroll for employees", "relevant": [], "answerable": false, "style": "near-miss"}
+{"id": "n03", "query": "which accountant do I use for the annual return", "relevant": [], "answerable": false, "style": "near-miss"}
+{"id": "n04", "query": "what is the wifi password at the studio", "relevant": [], "answerable": false, "style": "near-miss"}
+{"id": "n05", "query": "how do I change the oil in my car", "relevant": [], "answerable": false, "style": "off-topic"}
+{"id": "n06", "query": "best sourdough starter ratio", "relevant": [], "answerable": false, "style": "off-topic"}
+{"id": "n07", "query": "what time does the farmers market open", "relevant": [], "answerable": false, "style": "off-topic"}
+{"id": "n08", "query": "how many vacation days do my employees get", "relevant": [], "answerable": false, "style": "near-miss"}

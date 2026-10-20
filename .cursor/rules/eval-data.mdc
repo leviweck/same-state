@@ -1,0 +1,9 @@
+---
+description: Rules for eval sets, golden questions and sample notes
+globs: eval/**,starter_kit/**,sample_data/**
+alwaysApply: false
+---
+
+- Golden sets and sample notes are synthetic and fictional. Never paste real notes, names, emails or numbers.
+- Real-notes evaluations run outside the repo; only aggregate numbers (MRR, hit@k, recall@k) may be recorded.
+- Keep not-in-notes questions in every golden set so the gate is always measured.

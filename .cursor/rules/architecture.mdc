@@ -1,0 +1,15 @@
+---
+description: plm-kit architecture, module boundaries and the defaults that must not change silently
+globs: plm_kit/**,tests/**,config/**
+alwaysApply: false
+---
+
+- The product is Same State (plain text, no trademark symbols); the package and command stay `plm-kit`.
+- Read `AGENTS.md` first. Retrieval lives in `plm_kit/` (docs -> bm25/dense -> pipeline fusion -> stale/dedupe ->
+  optional rerank -> gate). Answers go through `plm_kit/answer.py` backends; add a backend as a module in
+  `plm_kit/answer_backends/` with `@register(...)`, never by editing core.
+- Keep `plm_kit/cli.py` thin: argument parsing and a call into a module.
+- Keep defaults: `retrieval.mode: fused`, reranker off, newest-copy off, `generation.backend: auto` (no GPU:
+  Ollama, else llama-cpp-python; `transformers_peft`/CUDA is opt-in), `generation.allow_off_machine: false`. A change to a default needs real-notes eval numbers and the maintainer's yes.
+- Every setting in `config/default.yaml` must also appear in `config.example.toml` (a test checks this).
+- `plm_kit/notes_server.py` is read-only: no send, write, delete, shell or network tool. A test enforces it.

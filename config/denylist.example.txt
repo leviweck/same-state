@@ -1,0 +1,8 @@
+# Content-rule denylist TEMPLATE. Copy to config/denylist.local.txt (gitignored, never committed or shipped) or
+# anywhere outside the repo and point PLM_KIT_DENYLIST at it. One phrase per line (1-3 words); case and punctuation
+# don't matter. Lines starting with # are ignored. tests/test_content_rules.py fails if any phrase appears in any
+# repo file or path. Run it with `python -m pytest -q tests/test_content_rules.py`.
+# The lines below are placeholders: replace them with your own.
+Example Employer Name
+Example Customer Name
+Example Internal Project

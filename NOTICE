@@ -1,0 +1,33 @@
+Same State: a personal language model kit
+Copyright 2026 Levi Eck
+Support contact: samestateguide@outlook.com (Licensor: Levi Eck)
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This product uses or, at the user's option, downloads the following third-party
+components, each subject to its own license (see THIRD_PARTY_NOTICES.md):
+
+- fastembed (Apache-2.0) - https://github.com/qdrant/fastembed
+- ONNX Runtime (MIT) - https://github.com/microsoft/onnxruntime
+- PyYAML (MIT) - https://github.com/yaml/pyyaml
+- tokenizers (Apache-2.0) - https://github.com/huggingface/tokenizers
+- NumPy (BSD-3-Clause) - https://github.com/numpy/numpy
+- SQLite (public domain) - https://sqlite.org/copyright.html
+- transformers, peft, accelerate, safetensors, huggingface_hub (Apache-2.0)
+- PyTorch (BSD-3-Clause); bitsandbytes (MIT); protobuf (BSD-3-Clause); sentencepiece (Apache-2.0)
+- certifi (MPL-2.0) and tqdm (MPL-2.0 AND MIT), unmodified
+- MSAL for Python (MIT), optional OneDrive sign-in -
+  https://github.com/AzureAD/microsoft-authentication-library-for-python; with PyJWT (MIT),
+  cryptography (Apache-2.0 OR BSD-3-Clause), cffi (MIT-0), pycparser (BSD-3-Clause)
+- requests (Apache-2.0) - https://github.com/psf/requests
+- MCP Python SDK: mcp 2.3.0 and mcp-types 2.3.0 (MIT), optional (`plm-kit mcp`,
+  requirements-mcp.txt) - https://github.com/modelcontextprotocol/python-sdk
+- Qwen3-8B model (Apache-2.0), user-downloaded - https://huggingface.co/Qwen/Qwen3-8B
+- ibm-granite/granite-embedding-english-r2 model (Apache-2.0), user-downloaded -
+  https://huggingface.co/ibm-granite/granite-embedding-english-r2
+- ibm-granite/granite-embedding-reranker-english-r2 model (Apache-2.0), optional,
+  user-downloaded - https://huggingface.co/ibm-granite/granite-embedding-reranker-english-r2
+
+No model weights are included in this distribution.
+
+Optional no-GPU answer support uses Ollama, llama.cpp and llama-cpp-python (MIT) and Qwen and Granite GGUF models (Apache-2.0); see THIRD_PARTY_NOTICES.md.

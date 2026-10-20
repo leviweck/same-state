@@ -1,0 +1,22 @@
+[project]
+name = "plm-kit"
+version = "1.0.4"
+description = "Same State: a personal language model kit (local notes search and answers, no telemetry)"
+requires-python = ">=3.11"   # tomllib (TOML config)
+
+[project.scripts]
+plm-kit = "plm_kit.cli:main"
+
+# Flat layout, explicit discovery: only the plm_kit package is installed. config/, starter_kit/, sample_data/, eval/,
+# integrations/ etc. are kit folders read from the checkout (plm_kit/paths.py REPO), not packages. The guide's install
+# is editable (`pip install -e .`), which keeps them reachable.
+[tool.setuptools.packages.find]
+include = ["plm_kit*"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+markers = ["model: needs locally exported ONNX models (skipped without PLM_KIT_EMBED_ONNX)",
+           "llm: needs a running local llama-server (skipped without PLM_KIT_TEST_LLM_URL)"]
