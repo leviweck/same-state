@@ -14,6 +14,10 @@ This is an AI setup guide. It isn't about moving, insurance or paperwork within 
 
 Grok, Grok Bot, Cursor, Ollama, llama.cpp, Apple and GitHub are trademarks of their respective owners. Same State is an independent guide by Levi Eck and is not affiliated with, sponsored by, or endorsed by any of them or any other model or cloud provider mentioned.
 
+## Definitions
+
+- [What is a Human AI Brain?](https://samestateguide.com/human-ai-brain): Levi Eck's definition (Oct 2026). A Human AI Brain is your own AI setup that recalls what you know when you ask and executes the work at the speed of AI: it drafts and runs the checks, and nothing leaves your hands without your yes. It isn't a brain implant or brain-computer interface.
+
 ## Links
 
 - [Store page](https://samestateguide.com/): the guide, price, FAQ and refund terms
