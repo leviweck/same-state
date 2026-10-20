@@ -1,6 +1,6 @@
 [project]
 name = "plm-kit"
-version = "1.0.4"
+version = "1.0.5"
 description = "Same State: a personal language model kit (local notes search and answers, no telemetry)"
 requires-python = ">=3.11"   # tomllib (TOML config)
 

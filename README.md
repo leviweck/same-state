@@ -2,7 +2,9 @@
 
 A local, CPU-friendly personal-notes retrieval kit: hybrid BM25 + dense retrieval fused with Reciprocal Rank Fusion (RRF), an optional pluggable reranker that is **off by default**, and a local LLM for answers.
 
-> Status: v1.0.4. Same State is a working name (no ™/®). The package and command are `plm-kit`.
+> Status: v1.0.5. Same State is a working name (no ™/®). The package and command are `plm-kit`.
+
+What's a Human AI Brain? Here's my definition: https://samestateguide.com/human-ai-brain
 
 ## What ships / what doesn't
 - Ships: code, config, tiny **synthetic** sample docs, a synthetic eval set.
