@@ -10,9 +10,10 @@
   body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; max-width: 560px; margin: 48px auto; padding: 0 20px; color: #1d1d1f; line-height: 1.5; }
   h1 { font-size: 1.6rem; margin-bottom: .25rem; }
   .box { border: 1px solid #ddd; border-radius: 10px; padding: 20px; margin-top: 24px; }
-  button { font-size: 1rem; padding: 12px 20px; border-radius: 8px; border: 0; background: #1d1d1f; color: #fff; cursor: pointer; }
+  button, a.dl { display: inline-block; font-size: 1rem; padding: 12px 20px; border-radius: 8px; border: 0; background: #1d1d1f; color: #fff; cursor: pointer; text-decoration: none; }
   button[disabled] { opacity: .5; cursor: default; }
   .small { font-size: .9rem; color: #555; }
+  #files { list-style: none; padding: 0; } #files li { margin: 12px 0; }
   [hidden] { display: none !important; }
 </style>
 </head>
@@ -22,9 +23,11 @@
 
   <div class="box" id="ready">
     <p><strong>Your download is ready.</strong></p>
-    <button id="get">Download the guide</button>
-    <p class="small">Each download link works once and expires after 15 minutes. Save the file somewhere you'll find it.
-      You can come back to this page for 7 days, up to 5 downloads.</p>
+    <p id="order-files"></p>
+    <button id="get">Get my download links</button>
+    <ul id="files" hidden></ul>
+    <p class="small">Each download link works once and expires after 15 minutes. Save each file somewhere you'll find it.
+      You can come back to this page for 7 days, up to 5 downloads of each file.</p>
   </div>
 
   <div class="box" id="msg" hidden>
@@ -33,6 +36,7 @@
 
   <p>Your use of the guide is covered by the <a href="license.html">Same State Guide License</a>.
     See the <a href="privacy.html">Privacy Policy</a> for how order details are handled.</p>
+  <p id="suite-license" hidden>If your order includes the Full Suite, your use of it is covered by the <a href="full-suite-license.html">Same State Full Suite License</a>.</p>
 
   <p class="small">Questions or trouble? Email <a href="mailto:samestateguide@outlook.com">samestateguide@outlook.com</a>
     and include your receipt.</p>
@@ -42,21 +46,29 @@
   "use strict";
   var API_BASE = "https://leviweck--same-state-delivery-web.us-east.modal.run"; // live endpoint
   var SUPPORT = "samestateguide@outlook.com";
+  var LABELS = { guide: "Download the Same State Guide", suite: "Download the Same State Full Suite" };
   var MESSAGES = {
     payment_pending: "Your payment is still processing. Some payment methods take a little longer. Check back on this page later, or email " + SUPPORT + " and I'll make sure you get your copy.",
     download_limit_reached: "This order has used all 5 downloads. If you still need the file, email " + SUPPORT + " with your receipt.",
+    file_limit_reached: "This file has used all 5 downloads. If you still need it, email " + SUPPORT + " with your receipt.",
     claim_window_expired: "This download page has expired (it lasts 7 days). Email " + SUPPORT + " with your receipt and I'll send your copy.",
     bad_session_id: "I couldn't find your order on this link. Please use the link from your checkout, or email " + SUPPORT + " with your receipt.",
+    order_problem: "Something about this order doesn't match what I sell, so I can't release a file automatically. Email " + SUPPORT + " with your receipt and I'll sort it out.",
     fallback: "Something went wrong getting your download. Please try again in a minute. If it keeps happening, email " + SUPPORT + " with your receipt."
   };
+  var ORDER_PROBLEM = ["addon_without_guide", "wrong_items", "wrong_price", "wrong_amount", "wrong_quantity", "wrong_currency"];
   var params = new URLSearchParams(window.location.search);
   var sid = params.get("session_id") || "";
   var btn = document.getElementById("get");
+  var list = document.getElementById("files");
 
   function show(code) {
+    if (ORDER_PROBLEM.indexOf(code) !== -1) code = "order_problem";
     document.getElementById("msg-text").textContent = MESSAGES[code] || MESSAGES.fallback;
     document.getElementById("msg").hidden = false;
   }
+
+  function goodUrl(u) { return typeof u === "string" && u.indexOf(API_BASE + "/file?t=") === 0; }
 
   if (!/^cs_live_[A-Za-z0-9]{10,200}$/.test(sid)) {
     document.getElementById("ready").hidden = true;
@@ -64,15 +76,66 @@
     return;
   }
 
+  function render(downloads) {
+    while (list.firstChild) list.removeChild(list.firstChild);
+    var shown = 0;
+    downloads.forEach(function (d) {
+      if (!d || !LABELS.hasOwnProperty(d.file)) return;
+      if (d.ok === true && !goodUrl(d.url)) return;  // never link anything but this service's /file
+      var li = document.createElement("li");
+      if (d.ok === true && goodUrl(d.url)) {
+        var a = document.createElement("a");
+        a.className = "dl";
+        a.href = d.url;
+        a.rel = "noreferrer";
+        a.textContent = LABELS[d.file];
+        a.addEventListener("click", function () { setTimeout(function () { a.removeAttribute("href"); a.style.opacity = ".5"; }, 0); });
+        li.appendChild(a);
+        shown++;
+      } else if (d.code === "download_limit_reached") {
+        var p = document.createElement("p");
+        p.className = "small";
+        p.textContent = LABELS[d.file].replace("Download the ", "") + ": " + MESSAGES.file_limit_reached;
+        li.appendChild(p);
+      } else {
+        return;
+      }
+      list.appendChild(li);
+      if (d.file === "suite") document.getElementById("suite-license").hidden = false;
+    });
+    list.hidden = false;
+    return shown;
+  }
+
+  // On load, ask which files this order includes (/files reads Stripe only: it counts nothing, stores nothing and
+  // makes no download link). Shows what's coming, or the order-problem message straight away.
+  fetch(API_BASE + "/files?session_id=" + encodeURIComponent(sid), { method: "GET", credentials: "omit", cache: "no-store" })
+    .then(function (r) { return r.json().catch(function () { return {}; }); })
+    .then(function (data) {
+      if (data && data.ok === true && Array.isArray(data.files)) {
+        var names = data.files.filter(function (f) { return f && LABELS.hasOwnProperty(f.file); })
+          .map(function (f) { return LABELS[f.file].replace("Download the ", ""); });
+        if (names.length) document.getElementById("order-files").textContent = "Your order includes: " + names.join(" and ") + ".";
+      } else if (data && ORDER_PROBLEM.indexOf(data.code) !== -1) {
+        document.getElementById("ready").hidden = true;
+        show(data.code);
+      }
+    })
+    .catch(function () {});
+
   btn.addEventListener("click", function () {
     btn.disabled = true;
     document.getElementById("msg").hidden = true;
     fetch(API_BASE + "/claim?session_id=" + encodeURIComponent(sid), { method: "GET", credentials: "omit", cache: "no-store" })
       .then(function (r) { return r.json().catch(function () { return {}; }); })
       .then(function (data) {
-        if (data && data.ok === true && typeof data.url === "string" && data.url.indexOf(API_BASE + "/file?t=") === 0) {
-          window.location.assign(data.url);
-          setTimeout(function () { btn.disabled = false; }, 4000);
+        if (data && data.ok === true && Array.isArray(data.downloads) && render(data.downloads) > 0) {
+          btn.textContent = "Get fresh download links";
+          btn.disabled = false;
+        } else if (data && data.ok === true && !Array.isArray(data.downloads) && goodUrl(data.url)) {
+          render([{ file: "guide", ok: true, url: data.url }]);  // older delivery service: guide only
+          btn.textContent = "Get fresh download links";
+          btn.disabled = false;
         } else {
           show(data && data.code);
           btn.disabled = false;
