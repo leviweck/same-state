@@ -43,3 +43,15 @@ wording that suggests endorsement or partnership.
 ## Drafts and actions
 The kit never sends anything. Agents may draft; the owner approves every outbound message in their own app.
 See `integrations/grok-bot/SKILL.md`.
+
+## Cursor Cloud specific instructions
+The Cloud Agent image keeps the dev toolchain in `/opt/plm-kit-venv`. `python`, `python3`, `pip`, `pytest`, `ruff`, `plm-kit`, `pip-licenses`, and `gitleaks` (8.30.1) are on `/usr/local/bin`. `python` and `python3` are wrappers into that venv, so `python -m pytest` uses the installed packages.
+
+When refreshing dependencies, use the CPU PyTorch index together with PyPI:
+
+```bash
+pip install --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple -r requirements-dev.txt -r requirements-mcp.txt
+pip install -e .
+```
+
+`plm-kit selftest`, `python -m pytest -q`, and `python -m eval.run_eval` pass with no model weights present: keyword search only, and tests marked `model` or `llm` skip. Embedding and answer models stay a separate `plm-kit download` on a machine you choose. There is no dev server to start.
