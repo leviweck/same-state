@@ -43,3 +43,9 @@ wording that suggests endorsement or partnership.
 ## Drafts and actions
 The kit never sends anything. Agents may draft; the owner approves every outbound message in their own app.
 See `integrations/grok-bot/SKILL.md`.
+
+## Cursor Cloud specific instructions
+- The image provides `/opt/plm-kit-venv`. `python`, `pytest`, `ruff`, `plm-kit`, `pip-licenses`, and `gitleaks` are on `PATH`. `python` is that virtualenv, with CPU PyTorch (`torch==2.8.0+cpu` from the CPU wheel index).
+- Dependencies come from `requirements.lock` (CPU index `https://download.pytorch.org/whl/cpu` plus PyPI), then `requirements-dev.txt` and `requirements-mcp.txt`, then an editable install of this checkout. Do not create a second virtualenv in the repo.
+- No process starts on boot. Search and the starter scorecard are local commands: `plm-kit selftest` (keyword search until an embedding export exists) and `python -m eval.run_eval` (BM25 until `PLM_KIT_EMBED_ONNX` is set).
+- Model files are not in the image. `plm-kit download` is explicit and writes only to the cache (`PLM_KIT_CACHE`, default `~/.cache/plm-kit`), never the repo. Tests that need those files skip.
